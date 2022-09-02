@@ -63,3 +63,16 @@ body{
     font-weight: 700;
 }
 /* ################ End of Header CSS ################*/
+.item{
+    padding: 12px 0;
+    background: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+}
+.item h4 {
+    font-family: 'Raleway', sans-serif;
+    text-transform: capitalize;
+    font-size: 29px;
+    font-weight: 700;
+}
+/* ################ End of items-count CSS ################*/
