@@ -9,10 +9,14 @@ a{
 body{
     background-color: #F6F6F7;
 }
-/* ################ End of common CSS */
+/* ################ End of common CSS ################*/
 #header-section{
     padding: 20px 0;
+    
+}
+.header-top {
     border-bottom: 1px solid rgba(0, 0, 0, 0.575);
+    padding: 0 25px 30px 25px;
 }
 .header-top-logo a {
     font-family: 'Raleway', sans-serif;
@@ -46,3 +50,16 @@ body{
     border: none;
     color: #fff;
 }
+.header-nav{
+    padding: 15px 0;
+}
+.navbar-nav{
+    display: flex;
+    gap: 16px;
+}
+.nav-link{
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+/* ################ End of Header CSS ################*/
