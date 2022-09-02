@@ -1,3 +1,48 @@
-h2{
-    color: red;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+body{
+    background-color: #F6F6F7;
+}
+/* ################ End of common CSS */
+#header-section{
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.575);
+}
+.header-top-logo a {
+    font-family: 'Raleway', sans-serif;
+    font-size: 27px;
+    font-weight: 800;
+    padding: 10px;
+    color: #5D5FEF;;
+}
+.header-top-logo a span {
+    background: #5D5FEF;
+    padding: 2px 12px;
+    margin-right: 5px;
+    color: #fff;
+    border-radius: 5px;
+}
+.header-top-btn{
+    text-align: right;
+}
+.common-btn{
+    font-family: 'Raleway', sans-serif;
+    padding: 8px 30px;
+    font-size: 20px;
+    font-weight: 600;
+    background: #5D5FEF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+.common-btn:hover{
+    background: #5d5fef9d;
+    border: none;
+    color: #fff;
 }
