@@ -6,6 +6,9 @@ const linkAdd = (id) => {
 }
 
 const displayCard = (items) => {
+  items.sort(function(a,b){
+    return b.total_view-a.total_view;
+  })
   let newsCount = document.getElementById('news-count');
   newsCount.innerText = items.length;
 
@@ -176,7 +179,7 @@ document.getElementById('blog-details').innerHTML = `
         <h2>Difference between arrow function and regular function in JavaScript?</h2>
         <p>Unlike regular functions, arrow functions do not have their own "this".</p>
         <p>Arguments objects are not available in arrow functions, but are available in regular functions.</p>
-        <p>Regular functions are constructible, they can be called using the ‘new’ keyword. However, the arrow functions are only "callable" and not constructible.</p>
+        <p>Regular functions are constructible, they can be called using the "new" keyword. However, the arrow functions are only "callable" and not constructible.</p>
       </div>
 
       <div class="second-question">
