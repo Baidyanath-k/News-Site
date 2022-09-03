@@ -63,6 +63,9 @@ body{
     font-weight: 700;
 }
 /* ################ End of Header CSS ################*/
+#items-count{
+    padding: 25px 0;
+}
 .item{
     padding: 12px 0;
     background: #FFFFFF;
