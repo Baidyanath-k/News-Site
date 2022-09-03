@@ -9,7 +9,7 @@ const displayCard = (items) => {
   items.sort(function(a,b){
     return b.total_view-a.total_view;
   });
-  
+
   let newsCount = document.getElementById('news-count');
   newsCount.innerText = items.length;
 
@@ -72,6 +72,7 @@ const displayCard = (items) => {
         `;
 
     cardItems.appendChild(createCardDiv)
+    spinner(false);
   });
 };
 linkAdd("08");
@@ -121,28 +122,28 @@ const navItemsDisplay = (navItems) => {
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" onclick="linkAdd('${navItems[0].category_id}')">${navItems[0].category_name}</a>
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[0].category_id}',spinner(true))">${navItems[0].category_name}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" onclick="linkAdd('${navItems[1].category_id}')">${navItems[1].category_name}</a>
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[1].category_id}',spinner(true))">${navItems[1].category_name}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" onclick="linkAdd('${navItems[2].category_id}')">${navItems[2].category_name}</a>
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[2].category_id}',spinner(true))">${navItems[2].category_name}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" onclick="linkAdd('${navItems[3].category_id}')">${navItems[3].category_name}</a>
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[3].category_id}',spinner(true))">${navItems[3].category_name}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" onclick="linkAdd('${navItems[4].category_id}')">${navItems[4].category_name}</a>
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[4].category_id}',spinner(true))">${navItems[4].category_name}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" onclick="linkAdd('${navItems[5].category_id}')">${navItems[5].category_name}</a>
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[5].category_id}',spinner(true))">${navItems[5].category_name}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" onclick="linkAdd('${navItems[6].category_id}')">${navItems[6].category_name}</a>
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[6].category_id}',spinner(true))">${navItems[6].category_name}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" onclick="linkAdd('${navItems[7].category_id}')">${navItems[7].category_name}</a>
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[7].category_id}',spinner(true))">${navItems[7].category_name}</a>
               </li>
             </ul>
           </div>
@@ -199,3 +200,12 @@ document.getElementById('blog-details').innerHTML = `
 </div>
 
 `;
+const spinner=(isLoading)=>{
+  let loading=document.getElementById('loader');
+  if (isLoading) {
+    loading.classList.remove('d-none');
+    
+  }else{
+    loading.classList.add('d-none');
+  }
+}
