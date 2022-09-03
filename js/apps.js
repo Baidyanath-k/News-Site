@@ -1,3 +1,4 @@
+
 const linkAdd = (id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     fetch(url)
@@ -17,15 +18,13 @@ const displayCard = (items) => {
         let cardTitle=item.title;
         let cardDetails = item.details;
         let cardImg=item.image_url;
+        let cardId=item._id;
         let cardAuthorName=item.author.name;
         let cardAuthorPublishedDate=item.author.published_date;
         let cardAuthorImg=item.author.img;
         let cardAuthorTotalView=item.total_view;
+        // console.log(typeof(cardId));
         
-
-
-
-
         let cardItems=document.getElementById('card-items');
 
         let createCardDiv = document.createElement('div');
@@ -51,16 +50,16 @@ const displayCard = (items) => {
                                 <img src="${cardAuthorImg}" class="img-fluid rounded-circle " alt="..." style="width:50px; height:50px; overflow:hidden">
                             </div>
                             <div class="card-footer-text ms-2">
-                                <h5>${cardAuthorName}</h5>
+                                <h5>${cardAuthorName ? cardAuthorName:"Name is not found"}</h5>
                                 <p>${cardAuthorPublishedDate}</p>
                             </div>
                         </div>
                         <div class="card-footer-two d-flex justify-content-between" style="gap:4px">
                             <i class="fa-solid fa-eye" style="font-size:26px"></i>
-                            <h5>${cardAuthorTotalView}</h5>
+                            <h5>${cardAuthorTotalView ? cardAuthorTotalView: 0}</h5>
                         </div>
                         <div class="card-footer-three">
-                            <button type="button" class="common-btn" onclick="detailsDisplay()">Details</button>
+                            <button type="button" class="common-btn" data-bs-toggle="modal" data-bs-target="#unique-modal" onclick="detailsLoaded('${cardId}')">Details</button>
                         </div>
                         
                     </div>
@@ -73,13 +72,32 @@ const displayCard = (items) => {
         cardItems.appendChild(createCardDiv)
     });
 };
-linkAdd("02");
+linkAdd("08");
 
-const detailsLoaded=()=>{
-    const detailUrl=`https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`;
+const detailsLoaded=(detailsUniqueId)=>{
+    const detailUrl=`https://openapi.programming-hero.com/api/news/${detailsUniqueId}`;
 
     fetch(detailUrl)
     .then(res=>res.json())
-    .then(detailData=>console.log(detailData.data[0]._id))
+    .then(detailData=>loadedDetails(detailData.data[0]))
 }
-detailsLoaded();
+
+const loadedDetails=uniqueData=>{
+    // console.log(uniqueData);
+    let uniqueDataTitle=uniqueData.title;
+    let uniqueDetails=uniqueData.details;
+    let uniquerThubnail=uniqueData.thumbnail_url;
+    // console.log(uniqueDetails);
+
+
+    let modalTitel=document.getElementById('modal-title');
+    modalTitel.innerText=uniqueDataTitle;
+
+
+    let modalbody=document.getElementById('main-modal-body');
+    modalbody.innerText=uniqueDetails;
+}
+
+const navItemsLoaded=()=>{
+    
+};
