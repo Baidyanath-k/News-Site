@@ -29,9 +29,21 @@
                 </div>
               </div>
               <div class="col-lg-6">
-                <div class="header-top-btn">
+                <div class="header-top-btn d-flex justify-content-end" style="gap:4px">
                   <button type="button" class="common-btn">News</button>
-                  <button type="button" class="common-btn">Blogs</button>
+
+
+                  <div class="blog-modal" id="blog-modal">
+                    <button type="button" class="common-btn" id="header-blogs" data-bs-toggle="modal" data-bs-target="#exampleModal">Blogs</button>
+
+
+                    <div class="blog-modal-details" id="blog-details">
+
+                    </div>
+
+
+                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -80,10 +92,10 @@
       </div>
     </div>
   </section>
+  <!-- ################ End of main-container ################ -->
 
 
   <section id="main-modal">
-    
     <div class="modal fade" id="unique-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -106,6 +118,12 @@
       </div>
     </div>
   </section>
+  <!-- ################ End of main modal ################ -->
+
+
+  <!-- ################ End of main-container ################ -->
+
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
