@@ -8,7 +8,8 @@ const linkAdd = (id) => {
 const displayCard = (items) => {
   items.sort(function(a,b){
     return b.total_view-a.total_view;
-  })
+  });
+  
   let newsCount = document.getElementById('news-count');
   newsCount.innerText = items.length;
 
