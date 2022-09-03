@@ -7,13 +7,13 @@ const linkAdd = (id) => {
 }
 
 const displayCard = (items) => {
-
     let newsCount=document.getElementById('news-count');
     newsCount.innerText=items.length;
 
-    items.forEach(item => {
+    let cardItems=document.getElementById('card-items');
+    cardItems.innerHTML='';
 
-        // console.log(item)
+    items.forEach(item => {
 
         let cardTitle=item.title;
         let cardDetails = item.details;
@@ -23,13 +23,12 @@ const displayCard = (items) => {
         let cardAuthorPublishedDate=item.author.published_date;
         let cardAuthorImg=item.author.img;
         let cardAuthorTotalView=item.total_view;
-        // console.log(typeof(cardId));
         
-        let cardItems=document.getElementById('card-items');
-
         let createCardDiv = document.createElement('div');
+        
         createCardDiv.style.margin="28px 0";
         createCardDiv.classList.add('card');
+        
         createCardDiv.innerHTML = `
         
         <div class="row g-0">
@@ -68,7 +67,7 @@ const displayCard = (items) => {
         </div>
         
         `;
-
+        
         cardItems.appendChild(createCardDiv)
     });
 };
@@ -76,18 +75,15 @@ linkAdd("08");
 
 const detailsLoaded=(detailsUniqueId)=>{
     const detailUrl=`https://openapi.programming-hero.com/api/news/${detailsUniqueId}`;
-
     fetch(detailUrl)
     .then(res=>res.json())
     .then(detailData=>loadedDetails(detailData.data[0]))
 }
 
 const loadedDetails=uniqueData=>{
-    // console.log(uniqueData);
     let uniqueDataTitle=uniqueData.title;
     let uniqueDetails=uniqueData.details;
     let uniquerThubnail=uniqueData.thumbnail_url;
-    // console.log(uniqueDetails);
 
 
     let modalTitel=document.getElementById('modal-title');
@@ -99,5 +95,57 @@ const loadedDetails=uniqueData=>{
 }
 
 const navItemsLoaded=()=>{
-    
+    const url=`https://openapi.programming-hero.com/api/news/categories`;
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>navItemsDisplay(data.data.news_category))
 };
+
+const navItemsDisplay=(navItems)=>{
+        let navsDiv=document.getElementById('navs');
+        navsDiv.innerHTML=`
+        
+        <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbar-nav" aria-controls="navbar-nav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar-nav">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[0].category_id}')">${navItems[0].category_name}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[1].category_id}')">${navItems[1].category_name}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[2].category_id}')">${navItems[2].category_name}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[3].category_id}')">${navItems[3].category_name}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[4].category_id}')">${navItems[4].category_name}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[5].category_id}')">${navItems[5].category_name}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[6].category_id}')">${navItems[6].category_name}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="linkAdd('${navItems[7].category_id}')">${navItems[7].category_name}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+         
+        `;
+}
+navItemsLoaded()
